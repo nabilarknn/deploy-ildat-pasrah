@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <title>Model Deployment KELOMPOK 5</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="container-sm mt-5 p-3 mb-2 bg-dark text-white">
+            <img src="tidur.jpg" class="img-fluid" />
+            <br />
+            <h3 class="text-center">Tes Kesehatan Pola Tidur</h3>
+            <br />
+            <h5 class="text-center">Program ini dibuat untuk melihat kesehatan tidur anda</h5>
+          </div>
+        </div>
+        <div class="col">
+          <div class="container-sm mt-5">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Prediksi pengaruh gaya hidup terhadap kesehatan pola tidur</h5>
+                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+
+                <form id="myForm" action="{{ url_for('prediksi') }}" method="POST">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Algoritma</label>
+                    <select class="form-select" name="algo">
+                      <option value="1">Decission Tree</option>
+                      <option value="2">KNN</option>
+                    </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Physical Activity Level</label>
+                    <input type="number" class="form-control" name="pal" id="pal" value="0" />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Daily Steps</label>
+                    <input type="number" class="form-control" name="ds" id="ds" value="0" />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Diastolic Blood Pressure</label>
+                    <input type="number" class="form-control" name="dbp" id="dbp" value="0" />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Sistolic Blood Pressure</label>
+                    <input type="number" class="form-control" name="sbp" id="sbp" value="0" />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Gender</label>
+                    <select class="form-select" name="gender">
+                      <option value="0">Laki-laki</option>
+                      <option value="1">Perempuan</option>
+                    </select>
+                  </div>
+
+                  <button class="btn btn-primary" id="submit" type="submit">Submit</button>
+                </form>
+
+                <div class="mb-3 mt-5" id="result_pred">
+                  <label for="exampleInputEmail1" class="form-label">Hasil</label>
+                  <input type="text" class="form-control" name="result" id="result" value="{{ prediction }}" readonly />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+  </body>
+</html>
